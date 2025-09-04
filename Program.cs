@@ -1,5 +1,6 @@
 ﻿using System;
 using CaesarCipherTest;
+using CaesarDecipherTest;
 using static System.Console;
 
 namespace EncryptionTest
@@ -22,6 +23,12 @@ namespace EncryptionTest
             WriteLine($"Encrypted Text: {encryptedText}");
             WriteLine();
 
+            string decipheredText = CaesarDecipher.Decryption(encryptedText,key);
+
+            WriteLine();
+            WriteLine($"Decrypted Text: {decipheredText}");
+            WriteLine();
+            
             ReadKey();
         }
     }
