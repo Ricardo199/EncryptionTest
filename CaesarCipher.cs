@@ -1,58 +1,84 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace CaesarCipherTest
 {
     public class CaesarCipher
+
     {
         public static string Encryption(string plaintext, int key)
         {
             StringBuilder ciphertext = new StringBuilder();
-
+            
             foreach (char character in plaintext)
             {
                 if (char.IsUpper(character))
                 {
-                    // Shift uppercase character by key, wrap around alphabet
-                    char ch = (char)(((character + key - 65) % 26) + 65);
-                    ciphertext.Append(ch);
+                    int newPosition = (character - 'A' + key) % 26;
+
+                    char newCharacter = (char)('A' + newPosition);
+
+                    ciphertext.Append(newCharacter);
                 }
+
                 else if (char.IsLower(character))
                 {
-                    // Shift lowercase character by key, wrap around alphabet
-                    char ch = (char)(((character + key - 97) % 26) + 97);
-                    ciphertext.Append(ch);
+                    int newPosition = (character - 'a' + key) % 26;
+
+                    char newCharacter = (char)('a' + newPosition);
+
+                    ciphertext.Append(newCharacter);
                 }
+
                 else
                 {
-                    // Non-alphabetic characters are not encrypted
                     ciphertext.Append(character);
                 }
             }
             return ciphertext.ToString();
         }
 
-        public static string Decryption(string cipherText, int key)
+        public static string Decryption(string ciphertext, int key)
         {
-            StringBuilder decryptedText = new StringBuilder();
-            foreach (char c in cipherText)
+            StringBuilder plaintext = new StringBuilder();
+
+            foreach (char character in ciphertext)
             {
-                if (char.IsLetter(c))
+                if (char.IsUpper(character))
                 {
-                    // Determine the ASCII offset based on character case ('A' for uppercase, 'a' for lowercase)
-                    char offset = char.IsUpper(c) ? 'A' : 'a';
-                    // Shift character backwards by key, wrap around alphabet using modulo
-                    char decryptedChar = (char)((((c + 26) - offset - key) % 26) + offset);
-                    decryptedText.Append(decryptedChar);
+                    int newPosition = (character - 'A' - key) % 26;
+
+                    //To wrap-around incase the newPosition value is negative
+                    if (newPosition < 0)
+                    {
+                        newPosition += 26;
+                    }
+
+                    char newCharacter = (char)('A' + newPosition);
+
+
+                    plaintext.Append(newCharacter);
+                }
+                else if (char.IsLower(character))
+                {
+                    int newPosition = (character - 'a' - key) % 26;
+
+                    //To wrap-around incase the newPosition value is negative
+                    if (newPosition < 0)
+                    {
+                        newPosition += 26;
+                    }
+
+                    char newCharacter = (char)('a' + newPosition);
+
+                    plaintext.Append(newCharacter);
                 }
                 else
                 {
-                    // Non-letter characters are appended unchanged
-                    decryptedText.Append(c);
+                    plaintext.Append(character);
                 }
             }
-            // Return the fully decrypted string
-            return decryptedText.ToString();
+            return plaintext.ToString();
         }
     }
 }
