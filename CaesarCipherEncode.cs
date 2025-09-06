@@ -3,35 +3,29 @@ using System.Text;
 
 namespace CaesarCipherTest
 {
-    public class CaesarCipher
-
+    public class CaesarCipherEncode
     {
         public static string Encryption(string plaintext, int key)
         {
             StringBuilder ciphertext = new StringBuilder();
-            
+
             foreach (char character in plaintext)
             {
                 if (char.IsUpper(character))
                 {
-                    int newPosition = (character - 'A' + key) % 26;
-
-                    char newCharacter = (char)('A' + newPosition);
-
-                    ciphertext.Append(newCharacter);
+                    // Shift uppercase character by key, wrap around alphabet
+                    char ch = (char)(((character + key - 65) % 26) + 65);
+                    ciphertext.Append(ch);
                 }
-
                 else if (char.IsLower(character))
                 {
-                    int newPosition = (character - 'a' + key) % 26;
-
-                    char newCharacter = (char)('a' + newPosition);
-
-                    ciphertext.Append(newCharacter);
+                    // Shift lowercase character by key, wrap around alphabet
+                    char ch = (char)(((character + key - 97) % 26) + 97);
+                    ciphertext.Append(ch);
                 }
-
                 else
                 {
+                    // Non-alphabetic characters are not encrypted
                     ciphertext.Append(character);
                 }
             }
