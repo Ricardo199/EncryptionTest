@@ -18,7 +18,7 @@ namespace EncryptionTest
                 string plainText = ReadLine();
                 int key = 17;
 
-                string encryptedText = CaesarCipherEncode.Encryption(plainText, key);
+                string encryptedText = CaesarCipher.Encryption(plainText, key);
 
                 // Print the result
                 WriteLine();
@@ -34,7 +34,7 @@ namespace EncryptionTest
                 if (dec == "y" || dec == "yes")
                 {
                     //Decrypt the message
-                    string decryptedText = CaesarCipherDecode.Decryption(encryptedText, key);
+                    string decryptedText = CaesarCipher.Decryption(encryptedText, key);
                     WriteLine();
                     WriteLine($"Decrypted Text: {decryptedText}");
                     WriteLine();

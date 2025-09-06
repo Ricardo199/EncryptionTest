@@ -3,7 +3,7 @@ using System.Text;
 
 namespace CaesarCipherTest
 {
-    public class CaesarCipherEncode
+    public class CaesarCipher
     {
         public static string Encryption(string plaintext, int key)
         {
@@ -30,6 +30,29 @@ namespace CaesarCipherTest
                 }
             }
             return ciphertext.ToString();
+        }
+
+        public static string Decryption(string cipherText, int key)
+        {
+            StringBuilder decryptedText = new StringBuilder();
+            foreach (char c in cipherText)
+            {
+                if (char.IsLetter(c))
+                {
+                    // Determine the ASCII offset based on character case ('A' for uppercase, 'a' for lowercase)
+                    char offset = char.IsUpper(c) ? 'A' : 'a';
+                    // Shift character backwards by key, wrap around alphabet using modulo
+                    char decryptedChar = (char)((((c + 26) - offset - key) % 26) + offset);
+                    decryptedText.Append(decryptedChar);
+                }
+                else
+                {
+                    // Non-letter characters are appended unchanged
+                    decryptedText.Append(c);
+                }
+            }
+            // Return the fully decrypted string
+            return decryptedText.ToString();
         }
     }
 }
