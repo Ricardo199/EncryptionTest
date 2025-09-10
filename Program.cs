@@ -11,12 +11,14 @@ namespace EncryptionTest
             string flg = "y";
 
             // Loop until user chooses to exit
-            while (flg != "n" || flg != "no")
+            while (flg != "n" && flg != "no")
             {
+
                 Console.Clear();
                 Write("Enter a text to encript: ");
                 string plainText = ReadLine();
-                int key = 17;
+                Write("Enter a key (number): ");
+                int key = Int32.Parse(ReadLine());
 
                 string encryptedText = CaesarCipher.Encryption(plainText, key);
 
