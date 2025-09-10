@@ -1,0 +1,66 @@
+# 🔐 Caesar Cipher Encryption Test
+
+This is a basic console application written in C# to demonstrate the Caesar Cipher encryption and decryption technique. It's designed for educational purposes as part of a college assignment.
+
+---
+
+## 📚 Project Overview
+
+The program allows users to:
+- Input a plain text message
+- Choose a numeric key for encryption
+- View the encrypted message
+- Optionally decrypt the message using the same key
+- Repeat the process or exit the application
+
+---
+
+## 🧠 How It Works
+
+The Caesar Cipher shifts each character in the input text by a specified number of positions in the alphabet. For example, with a key of `3`, `A` becomes `D`, `B` becomes `E`, and so on.
+
+The encryption and decryption logic is handled by the `CaesarCipher` class (assumed to be defined in the `CaesarCipherTest` namespace).
+
+---
+
+## 🚀 Usage
+
+1. Run the program in a C# environment (e.g., Visual Studio, .NET CLI).
+2. Follow the prompts in the console:
+   - Enter a message to encrypt
+   - Enter a numeric key
+   - View the encrypted result
+   - Choose whether to decrypt or continue
+
+---
+
+## 🧪 Example
+
+```
+Enter a text to encrypt: hello
+Enter a key (number): 3
+
+Encrypted Text: khoor
+
+Would you like to decrypt the message? yes
+
+Decrypted Text: hello
+Would you like to encrypt another message? no
+
+Goodbye!
+```
+
+---
+
+## 📁 Notes
+
+- No external libraries or installation required.
+- This project is intended for demonstration only and is not secure for real-world encryption needs.
+- The loop logic ensures the user can continue encrypting/decrypting until they choose to exit.
+
+---
+
+## 👨‍🎓 Authors
+
+Ricardo
+Austin
